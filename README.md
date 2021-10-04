@@ -22,7 +22,7 @@ Song Dataset
 The first dataset is a subset of real data from the Million Song Dataset. Each file is in JSON format and contains metadata about a song and the artist of that song. The files are partitioned by the first three letters of each song's track ID. For example, here are filepaths to two files in this dataset.
 
 `song_data/A/B/C/TRABCEI128F424C983.json`
-`song_data/A/A/B/TRAABJL12903CDCF1A.json`
+ `song_data/A/A/B/TRAABJL12903CDCF1A.json`
 
 And below is an example of what a single song file, TRAABJL12903CDCF1A.json, looks like.
 
@@ -40,3 +40,25 @@ And below is an example of what a single song file, TRAABJL12903CDCF1A.json, loo
 }`
 
 This information is parsed to populate the Songs and Artists Dimension tables
+
+## Log Dataset
+The log files in the dataset are partitioned by year and month. For example, here are filepaths to two files in this dataset.
+`log_data/2018/11/2018-11-12-events.json
+log_data/2018/11/2018-11-13-events.json`
+
+This data contains information of which songs Users listened to at a specific time. Information is parsed to provide data for the Songplays Fact table and the Users and Time Dimension tables. The songplays.artist_id and songplays.song_id columns are populated by a lookup based on the Song Title, Artist Name and song Duration.
+
+## create_table.ipynb
+This Python script recreates the database and tables used to store the data
+
+## sql_queries.ipynb
+A Python script that defines all the SQL statements used by this project.
+
+## etl_process.ipynb
+A Python Jupyter Notebook that was used to initially explore the data and test the ETL process.
+
+## etlallfiles.py
+This Python script reads in the Log and Song data files, processes and inserts data into the database.
+
+## test.ipynb
+A Python Jupyter Notebook that was used to test that data was loaded properly.
